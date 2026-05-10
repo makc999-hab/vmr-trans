@@ -740,6 +740,13 @@
 
 </div>
 
+<!-- Экран запуска для мобильных -->
+<div id="startScreen" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,5,20,0.95); z-index:500; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+  <div style="font-size:48px; margin-bottom:20px;">▶</div>
+  <div style="font-size:22px; font-weight:700; color:#fff; margin-bottom:10px;">ВМР ТРАНС</div>
+  <div style="font-size:14px; color:rgba(255,255,255,0.5);">Нажмите чтобы начать</div>
+</div>
+
 <!-- Модальное окно для видео -->
 <div class="modal" id="videoModal">
   <button class="modal-close" onclick="closeVideo()">✕</button>
@@ -802,7 +809,25 @@
   }
 
   // Запускаем первое видео
-  videos[0].play();
+  videos[0].play().catch(() => {});
+
+  // iOS Safari: показываем экран запуска на мобильных
+  const startScreen = document.getElementById('startScreen');
+  if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+    startScreen.style.display = 'flex';
+  }
+
+  let started = false;
+  function startOnTouch() {
+    if (started) return;
+    started = true;
+    startScreen.style.display = 'none';
+    videos[current].play().catch(() => {});
+    document.removeEventListener('touchstart', startOnTouch);
+    document.removeEventListener('click', startOnTouch);
+  }
+  document.addEventListener('touchstart', startOnTouch);
+  document.addEventListener('click', startOnTouch);
 
   function goTo(n) {
     // Пауза текущего видео
