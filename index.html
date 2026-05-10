@@ -272,6 +272,93 @@
   }
 
   .dot.active { background: #00aaff; transform: scale(1.4); }
+
+  /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+  @media (max-width: 768px) {
+    .slide { padding: 50px 20px 80px; }
+
+    h1 { font-size: 28px; margin-bottom: 12px; }
+    h2 { font-size: 22px; margin-bottom: 10px; }
+
+    .subtitle { font-size: 14px; margin-bottom: 16px; line-height: 1.5; }
+    .tag { font-size: 10px; letter-spacing: 1px; padding: 4px 14px; margin-bottom: 14px; }
+
+    .big-number-gold { font-size: 44px; }
+
+    .divider { margin: 12px auto; }
+
+    /* Сетки — одна колонка */
+    .stats-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .stat-card { padding: 16px 10px; }
+    .stat-card .num { font-size: 26px; }
+    .stat-card .label { font-size: 10px; }
+
+    /* Квоты — одна строка на маленьком */
+    .quota-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .quota-card { padding: 12px 8px; }
+    .quota-card img { height: 80px !important; }
+    .quota-card .tons { font-size: 24px; }
+    .quota-card .product { font-size: 10px; }
+
+    /* Методы — одна колонка */
+    .method-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .method-card { padding: 14px 16px; display: flex; align-items: center; gap: 14px; text-align: left; }
+    .method-card .icon { font-size: 28px; margin-bottom: 0; flex-shrink: 0; }
+    .method-card .title { font-size: 16px; }
+    .method-card .desc { font-size: 12px; margin-top: 2px; }
+
+    /* Активы — две колонки */
+    .benefits {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .benefit { padding: 14px; font-size: 13px; }
+    .benefit strong { font-size: 16px; }
+
+    /* Offer box */
+    .offer-box { padding: 24px 20px; margin-top: 14px; }
+    .offer-box .price { font-size: 36px; }
+    .offer-box .desc { font-size: 14px; }
+
+    /* Список */
+    .list li { font-size: 16px; padding: 8px 0; }
+
+    /* Навигация */
+    .nav { bottom: 16px; gap: 10px; }
+    .nav button { padding: 10px 18px; font-size: 13px; }
+    .dot { width: 6px; height: 6px; }
+
+    /* Лого и номер */
+    .logo { font-size: 11px; top: 14px; left: 16px; }
+    .slide-number { font-size: 11px; top: 14px; right: 16px; }
+
+    /* Модалка */
+    .modal video { width: 95% !important; }
+    .modal-close { font-size: 28px; top: 16px; right: 20px; }
+  }
+
+  @media (max-width: 400px) {
+    h1 { font-size: 24px; }
+    h2 { font-size: 19px; }
+    .stats-grid { grid-template-columns: 1fr 1fr 1fr !important; }
+    .quota-grid { grid-template-columns: 1fr; }
+    .quota-card img { height: 100px !important; }
+    .quota-card .tons { font-size: 28px; }
+    .benefits { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
